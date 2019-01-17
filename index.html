@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>领潮者·真敢做 不过这则新闻更敢说</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,shrink-to-fit=no">
+    <meta content="yes" name="apple-mobile-web-app-capable">
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <meta name="msapplication-tap-highlight" content="no">
+    <link rel="stylesheet" href="css/style.css"/>
+    <script src="js/jquery-1.8.3.min.js"></script>
+    <script src="js/jquery.qrcode.min.js"></script>
+    <script type="text/javascript">
+    	var _hmt = _hmt || [];
+		(function() {
+			  var hm = document.createElement("script");
+			  hm.src = "https://hm.baidu.com/hm.js?c4887c630239d0961fa9506507b05d66";
+			  var s = document.getElementsByTagName("script")[0]; 
+			  s.parentNode.insertBefore(hm, s);
+		})(); 
+    </script>
+    <script>
+        document.addEventListener("WeixinJSBridgeReady", function () {
+            audioAutoPlay('musicStar');
+        }, false);    
+    </script>
+</head>
+<body>
+<!--横屏-->
+<div id="page-landscape" class="page-landscape">
+    <img src="img/phone.png" alt=""/>
+    <h3>为了更好的体验，请使用竖屏浏览</h3>
+</div>
+<!--竖屏-->
+<div id="page-portrait" class="page-portrait">
+    <!--预加载-->
+    <div class="load-page" id="loadingPage">
+        <div class="img-load-now">
+            <!--加载动画-->
+            <img class="loading" src="img/zhen02.png"/>
+            <img id="zhizhen" class="zhizhen" src="img/zhizhen.png" alt=""/>
+            <p></p>
+            <img class="zhen03" src="img/zhen03.png" alt=""/>
+        </div>
+    </div>
+    <!--正文-->
+    <div class="page-box" id="pageContainer">
+        <div class="page-01">
+            <div class="go-rule"></div>
+        </div>
+        <div class="page-02">
+            <div class="go-game"></div>
+            <span id="closePage"></span>
+        </div>
+        <div class="page-03 page-03-an01">
+            <div id="nowNum" class="nowNum">
+                <img class="gfdg" src="img/gfdg.png" alt=""/>
+                <img class="mouse" src="img/mouse.png" alt=""/>
+            </div>
+            <p id="title" class="title"><span></span></p>
+            <div id="inner" class="inner"><img  src="img/title01.png"/></div>
+            <div  class="btn-box" >
+                <img class="line" src="img/line.png" alt=""/>
+                <div id="answer-a" class="right">
+                    <img class="if-true" src="img/if-true.png" alt=""/>
+                    <img class="if-wrong" src="img/if-wrong.png" alt=""/>
+                    <img class="btn-bg" src="img/kuang-true.png" alt=""/>
+                    <p> <span>真：横说竖说</span></p>
+                </div>
+                <div id="answer-b" class="error">
+                    <img class="if-true" src="img/if-true.png" alt=""/>
+                    <img class="if-wrong" src="img/if-wrong.png" alt=""/>
+                    <img class="btn-bg" src="img/kuang-wrong.png" alt=""/>
+                    <p><span>jia：横说竖说</span></p>
+                </div>
+                <div id="change-Q" class="change-Q">
+                    <!--换一题-->
+                </div>
+                <div id="next-Q" class="next-Q">
+                    <!--GO!-->
+                </div>
+                <div id="result-Q" class="result-Q">
+                    <!--我要交卷-->
+                </div>
+                <!--<img class="guangzou" src="img/guangzou.gif" alt=""/>-->
+            </div>
+        </div>
+        <div class="page-03-02 shou-true">
+            <img src="img/shou-true02.png" alt=""/>
+        </div>
+        <div class="page-03-02 shou-wrong">
+            <img src="img/shou-wrong02.png" alt=""/>
+        </div>
+        <div class="page-03-03">
+            <img class="jisuan" src="img/jisuanloading02.gif" alt=""/>
+            <p>答题结束，正在计算分数...</p>
+        </div>
+        <div class="page-04">
+            <img src="img/bg.png"   id="score" class="score"/>
+            <div id="playAgain" class="playAgain"></div>
+            <div id="toShare" class="toShare"></div>
+            <img class="shareBg" src="img/shareBg.png" alt=""/>
+        </div>
+    </div>
+</div>
+<audio id="musicStar" src="source/music.mp3" preload="auto" loop="loop"></audio>
+<audio id="sucMic" src="source/suc.mp3" preload="auto"></audio>
+<audio id="errMic" src="source/err.mp3" preload="auto" ></audio>
+<audio id="sresultMic" src="source/result03.mp3" preload="auto" ></audio>
+<audio id="eresultMic" src="source/nresult02.mp3" preload="auto" ></audio>
+<div class="btn-music">
+    <img src="img/music-open.png" class="open music" style="display: block;"/>
+    <img src="img/music-close.png" class="clock music" style="display: none;"/>
+</div>
+<div class="viewPC">
+    <div class="ewmBox">
+        <div id="ewmImg"></div>
+        <p>请使用手机端打开</p>
+    </div>
+</div>
+</body>
+<script>
+    //页面提示二维码
+    if(navigator.userAgent.match(/(iPhone|iPod|Android|ios|SymbianOS)/i) == null){
+        $('.viewPC').show();
+        $('#ewmImg').qrcode(window.location.href);
+    }
+    
+</script>
+<script>
+    var musicStar = document.getElementById('musicStar');
+    var sucMic = document.getElementById('sucMic');
+    var errMic = document.getElementById('errMic');
+    var sresultMic = document.getElementById('sresultMic');
+    var eresultMic = document.getElementById('eresultMic');
+
+    function audioAutoPlay(id){
+        var audio = document.getElementById(id);
+        var play = function(){
+            audio.play();
+//            audio.pause();
+            sucMic.play();
+            sucMic.pause();
+            errMic.play();
+            errMic.pause();
+            sresultMic.play();
+            sresultMic.pause();
+            eresultMic.play();
+            eresultMic.pause();
+            document.removeEventListener("touchstart",play, false);
+        };
+        audio.play();
+        audio.pause();
+        sucMic.play();
+        sucMic.pause();
+        errMic.play();
+        errMic.pause();
+        sresultMic.play();
+        sresultMic.pause();
+        eresultMic.play();
+        eresultMic.pause();
+        document.addEventListener("touchstart",play, false);
+    }
+</script>
+
+<script src="js/style.js"></script>
+<!--分享代码-->
+<script type="text/javascript" src="https://h5php.xingyuanauto.com/weixin_serve/jssdk/js/wx_share.js"></script>
+<script>
+    $(function(){
+        //微信分享调用
+        var wxShare = new WxShare({ //微信自定义分享功能
+            title:'下班了 快闪人', //分享标题
+            desc:'下班不快点走准没好事',//分享描述
+            img:'img/share.jpg'//分享图片
+        })
+    })
+</script>
+</html>
