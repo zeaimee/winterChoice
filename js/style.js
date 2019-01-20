@@ -55,240 +55,241 @@
 })(window);
 
 $(document).ready(function(){
-   $('.go-rule').click(function(){
-       $('.page-02').show();
-       $('.page-01').hide();
-   });
-    $('#closePage').click(function(){
-       $('.page-02').hide();
-        $('.page-01').show();
-    });
-    $('.go-game').click(function(){
+    // 开始答题
+    $('.page-01').on('click', '#go-game',function(){
+        console.log('gogame')
         $('.page-03').show();
-        $('.page-02').hide();
-
+        $('.page-01').hide();
         Game.init();
+        if(musicStar.paused){
+            musicStar.play();
+            $('.open').show();
+            $('.clock').hide();
+        }
     });
+    // 查看轮播图
+    var swiper = null
+    $('#otherResult').click(function(){
+        $('.allResult-box').show()
+        var depth = window.innerWidth/750*550
+        var stretch = window.innerWidth/750*120
+        swiper = new Swiper('#swiper-container', {
+            effect: 'coverflow',
+            grabCursor: true,
+            centeredSlides: true,
+            loop: true,
+            slidesPerView: 'auto',
+            loopedSlides:3,
+            loopAdditionalSlides: 0,
+            coverflow: {
+                rotate: 0,
+                stretch: stretch,
+                depth: depth,
+                modifier: 1,
+                slideShadows : true
+            } 
+        });
+        
+    })
+    // 轮播图控制
+    $('.swiper-button-left').click(function(){
+        swiper.slideNext()
+    })
+    $('.swiper-button-right').click(function(){
+        swiper.slidePrev()
+    })
+    // 关闭轮播图
+    $('#allResult-close').click(function(){
+        swiper.destroy()
+        $('.allResult-box').hide()
+    })
+    $('.allResult-box').on('click', '.go-result-detail', function(){
+        var code = $(this).data('result')
+        console.log('9---------',code)
+        $('.allResult-box').hide()
+        $('.resultD').hide()
+        $('.resultJ').hide()
+        $('.resultT').hide()
+        var classname = Game.data.resultObj[code].classname
+        $(classname).show()
+        Game.data.shareObj.bg = Game.data.resultObj[code].url
+    })
+    // 生成海报分享
+    $('#goResult').click(function(){
+        drawImg(Game.data.shareObj)
+    })
+    //  查看视频
+    $('#videobtn').click(function(){
+
+    })
+    var getPixelRatio = function(context) {
+        var backingStore = context.backingStorePixelRatio ||
+            context.webkitBackingStorePixelRatio ||
+            context.mozBackingStorePixelRatio ||
+            context.msBackingStorePixelRatio ||
+            context.oBackingStorePixelRatio ||
+            context.backingStorePixelRatio || 1;
+        return (window.devicePixelRatio || 1) / backingStore;
+    };
+    function drawImg (obj) {
+        var canvas = document.createElement('canvas')//画布
+        var ctx = canvas.getContext("2d");
+        var ratio = getPixelRatio(ctx);
+        canvas.width = window.innerWidth*ratio;
+        canvas.height = window.innerHeight*ratio;
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        ctx.fillStyle = '#000000';
+        ctx.fillRect(0,0,canvas.width, canvas.height);
+        
+        var head = new Image()
+        head.crossOrigin = "*";
+        head.src = obj.head
+        head.onload = function() {
+            //画头像
+            ctx.drawImage(head, 0, 0, head.width, head.height, 37/750*canvas.width, 1203/1450*canvas.height, 100/750*canvas.width, 100/750*canvas.width);
+            var bg = new Image()
+            bg.crossOrigin = "*";
+            bg.src = obj.bg
+            bg.onload = function() {
+                 //画结果图
+                ctx.drawImage(bg, 0, 0, bg.width, bg.height, 0, 0, canvas.width, canvas.height);
+                var erwm = new Image()
+                erwm.crossOrigin = "*";
+                erwm.src = obj.erwm
+                erwm.onload = function () {
+                      //画二维码
+                    ctx.drawImage(erwm, 0, 0, erwm.width, erwm.height, 610/750*canvas.width, 1203/1450*canvas.height, 110/750*canvas.width, 110/750*canvas.width);
+                     //画用户昵称
+                    ctx.font = '14px';
+                    ctx.fillStyle = '#4b9eee';
+                    ctx.fillText('@'+ obj.username, 37/750*canvas.width, 1272/1450*canvas.height)
+                    // 画发现我的精神图腾
+                    ctx.font = '20px';
+                    ctx.fillStyle = '#fff';
+                    ctx.fillText('发现我的精神图腾', 37/750*canvas.width, 1230/1450*canvas.height)
+                    //img 数据，可传给后台数据库
+                    var imgData = canvas.toDataURL()
+                    $('.result-share-img').attr('src', imgData)
+                    $('.resultToShare').show()
+                }
+            }  
+        }   
+    }
+
     var initData = {
-        chosedNum:0,//答了多少题
         QArr:[//题目和答案类容：id:题目序号，title：题目，right:真答案，error:假答案，inner:配图，answer:题目答案，1表示right对，0表示error对
             {
                 id:1,
-                title:'老婆在追孙俪的那年花开，结果看着看着就跑偏了，竟迷恋起了邓超…',
-                right:'邓超的微博堪称孙俪的广告位，实力宠妻太吸粉了',
-                error:'别慌，没有DX3搞不定的老婆，买一辆它就成假新闻了',
-                inner:'img/title01.png',
-                answer:0
+                title:'w1.png',
+                a:'w1-a.png',
+                b:'w1-b.png'
             },
             {
                 id:2,
-                title:'女同事上班看极限挑战被领导撞见，以为会被diss，没成想却是让她去联系张艺兴',
-                right:'啊~~~东南DX3要请我老公来做代言了！！！',
-                error:'真会搞事情，老太太不服就服你！这要是真的我直播跪榴莲',
-                inner:'img/title02.png',
-                answer:1
+                title:'w2.png',
+                a:'w2-a.png',
+                b:'w2-b.png'
             },
             {
                 id:3,
-                title:'自从战狼破了55亿票房奇迹后，老板都快瘦成东南吴彦祖了',
-                right:'当初拒绝了战狼的投资请求，要是我早哭的像个3百斤的孩子了',
-                error:'一看就是中央戏精学院毕业的，直接给DX3打广告不好吗！我不介意',
-                inner:'img/title03.png',
-                answer:0
+                title:'w3.png',
+                a:'w3-a.png',
+                b:'w3-b.png'
             },
             {
                 id:4,
-                title:'一男子觉得自己月月水逆，然后一狠心花了十万块钱去找大师破解，然并卵…',
-                right:'明明不努力，偏要怪水逆！十万足够买辆DX3了，从此成为有志青年',
-                error:'大师肯定是骗子，免费破水逆，加微…（微不了了！此处严禁贴小广告）',
-                inner:'img/title04.png',
-                answer:1
+                title:'w4.png',
+                a:'w4-a.png',
+                b:'w4-b.png'
             },
             {
                 id:5,
-                title:'女孩在男乘客衣服上误留唇印，在网上向“大嫂”解释：太挤了，口误哈',
-                right:'哈哈哈…掐指一算，大哥回家必有一难！远离这种尴尬你只需一辆DX3',
-                error:'然后有无数大哥跟老婆说：你看吧，人家小妹妹都在网上向你解释了',
-                inner:'img/title05.png',
-                answer:1
+                title:'w5.png',
+                a:'w5-a.png',
+                b:'w5-b.png'
             },
             {
                 id:6,
-                title:'张先生自驾去野生动物园惨遭老虎围攻，最后凭借超强的加速度突出重围，自救成功',
-                right:'朋友们，这是一道送分题啊！因为他开的是…',
-                error:'开的是东南DX3是吧？哼哼，这点套路，我都会抢答了',
-                inner:'img/title06.png',
-                answer:0
-            },
-            {
-                id:7,
-                title:'都说没拿过奖的人生是不完美的人生，无论什么奖…',
-                right:'这还不简单，谁还没得过几朵小红花似的',
-                error:'这么说不公平！车生亦如此好伐，DX3拿奖到手软~',
-                inner:'img/title07.png',
-                answer:0
-            },
-            {
-                id:8,
-                title:'我女朋友买了DX3的“真心橙”后就想和我分手，说我名字不对…',
-                right:'不…不会是我们东南总经理惹的祸吧，他名字谐音真心橙（捂脸）',
-                error:'都是借口！真相只有一个，有了DX3她会停车了！',
-                inner:'img/title08.png',
-                answer:0
-            },
-            {
-                id:9,
-                title:'一朋友哭着说：路边的蔬菜你不要捡！否则就会发展出一个丈母娘，最后还让你买套房…',
-                right:'套路太深，防不胜防啊…教你一招，开着DX3没房丈母娘也喜欢~',
-                error:'捡把蔬菜就能赠个媳妇，还有这种好事？！在哪捡的我也蹲点去',
-                inner:'img/title09.png',
-                answer:1
-            },
-            {
-                id:10,
-                title:'有一位奇葩的相亲女说：长江以北全是农村，我不要！',
-                right:'我要回农村，城市套路深！',
-                error:'我是东南的，我就不这样，我们的DX3想和全国人民交朋友',
-                inner:'img/title10.png',
-                answer:0
-            },
-            {
-                id:11,
-                title:'一位资深球迷在看完那场赢了比赛却输了世界杯的直播后，哭着喊了一句：国足牛B，这次是站着死的！',
-                right:'向前跑，不再有冷眼和嘲笑~9月，DX3与你一起，为国足喝彩！',
-                error:'你会不会忽然的出线，也许在未来的很多年，我都等着看！',
-                inner:'img/title11.png',
-                answer:1
-            },
-            {
-                id:12,
-                title:'一位初入职场的小哥总被自己有车的领导蹭车，怕被潜规则就辞职了',
-                right:'哈哈哈，看过后续报道，人家蹭车只是想给儿子也买一辆DX3而已',
-                error:'现在的年轻人都这么嚣张了吗，刚工作就有车…我不信！！！（人家不贵好吧）',
-                inner:'img/title12.png',
-                answer:1
-            },
-            {
-                id:13,
-                title:'胡歌说自己的处女座原则：我可以脏乱但你一定要干净（连霸道都这么迷人）',
-                right:'你长得好看你说什么都对（微笑）',
-                error:'这可能是个假处女座…不是该力求完美吗，比如汽车中的处女座DX3',
-                inner:'img/title13.png',
-                answer:0
-            },
-            {
-                id:14,
-                title:'听说一小学生拿父母手机给女主播打call，狠刷十几万的礼物',
-                right:'俗话说养娃不遛娃，不是好爸爸！DX3赐给你光辉家长的力量！',
-                error:'吓得我攥紧了自己只剩100块的卡，哎…忘了自己还没对象呢',
-                inner:'img/title14.png',
-                answer:1
-            },
-            {
-                id:15,
-                title:'以前是女朋友追着喊：选我还是选游戏，现在成男友求她放下农药远离手机',
-                right:'小乔李白我们走，有了农药谁还稀罕蓝朋友！',
-                error:'那是你没有一辆DX3，兜风耍帅让你瞬间两米八，农药算个啥！',
-                inner:'img/title15.png',
-                answer:0
+                title:'w6.png',
+                a:'w6-a.png',
+                b:'w6-b.png'
             }
         ],
         chosed:false,//是否按了对错按钮
-        resultArr:[//结果展示
-           'img/0fen.png',//0分
-           'img/20fen.png',//20分
-           'img/40fen.png',//40分
-           'img/60fen.png',//60分
-           'img/80fen.png',//80分
-           'img/100fen.png'//100分
-        ],
-        score:0,//当前的分数
-        randNum:null,//随机的index
-        nowNum:['第一题','第二题','第三题','第四题','第五题'],//第多少题了
-        ranAnimate:['page-03-an01','page-03-an02','page-03-an03','page-03-an04','page-03-an05'],
+        resultCode:{//结果展示
+           tansuo: 4,
+           hezuo: 3,
+           jianchi: 2
+        },
+        resultObj:{
+            4: {
+                classname: '.resultT',
+                url: 'img/T/T-saveimg.jpg'
+            },
+            3: {
+                classname: '.resultD',
+                url: 'img/D/D-saveimg.jpg'
+            },
+            2: {
+                classname: '.resultJ',
+                url: 'img/J/J-saveimg.jpg'
+            }
+        },
+        score:0,//当前的分数 
+        ranAnimate:['page-03-an01','page-03-an02','page-03-an03','page-03-an04','page-03-an05', 'page-03-an01'],
         item:null,//随机抽取的题目
         firstInit:true,
-        answerNow:null
+        commonpath: 'img/answerall/',
+        index: 0,
+        randclass: null,
+        shareObj: {
+            head: 'img/ball2.png',
+            username: '123',
+            bg: '',
+            erwm: 'img/ball.png'
+        }
     };
     var Game = {
         data:{},
         init:function(){//初始化数据
-            Game.data = JSON.parse(JSON.stringify(initData));
+            Game.data = JSON.parse(JSON.stringify(initData));    
             Game.pageInit();
             Game.handle();
-        },
+        }, 
         rand:function(n){//随机抽题
             return Math.floor(Math.random()*n)
-        },
+        },  
         pageInit:function(){//更换题目
-            Game.data.chosed = false;
-            Game.data.randNum = Game.rand(Game.data.QArr.length);
-            Game.data.item = Game.data.QArr[Game.data.randNum];
-            //console.log(Game.data.score);
-            $('#change-Q').show();
-            $('#next-Q').hide();
-            $('#answer-a').removeClass('yes').removeClass('no');
-            $('#answer-b').removeClass('no').removeClass('yes');
-            
-            $('#inner img').attr('src',Game.data.item.inner);
-            $('#title span').html(Game.data.item.title);
-            $('#answer-a p span').html(Game.data.item.right);
-            $('#answer-b p span').html(Game.data.item.error);
-            $('.page-03').addClass(Game.data.ranAnimate[Game.rand(5)]);
-                        
-            console.log('已答题'+Game.data.chosedNum,Game.data.item.id,Game.data.score);
+            Game.data.chosed = false; 
+            Game.data.item = Game.data.QArr[Game.data.index];
+            $('.page-03').removeClass(Game.data.randclass)
+            $('#answer-a, #answer-b').removeClass('yes');
+            $('#title img').attr('src',Game.data.commonpath+Game.data.item.title);
+            $('#answer-a .answer-inner').attr('src', Game.data.commonpath+Game.data.item.a);
+            $('#answer-b .answer-inner').attr('src', Game.data.commonpath+Game.data.item.b);
+            Game.data.randclass = Game.data.ranAnimate[Game.data.index]
+            $('.page-03').addClass(Game.data.randclass);                           
         },
         handle:function(){//操作
+            $('#answer-b').click(function(){
+                console.log('8888')
+                $('#answer-b').removeClass('yes');
+                if(!$('#answer-b').hasClass('yes')){
+                    $('#answer-b').addClass('yes');
+                } 
+                Game.next()
+                          
+            });   
             $('#answer-a').click(function(){
                 console.log('222')
                 $('#answer-b').removeClass('yes');
                 if(!$('#answer-a').hasClass('yes')){
                     $('#answer-a').addClass('yes');
-                    Game.data.answerNow = 1;
                 }
-                $('#change-Q').hide();
-                if(Game.data.chosedNum>=4){
-                    $('#result-Q').show();
-                }else{
-                    $('#next-Q').show();
-                }
-            });
-            $('#answer-b').click(function(){
-                console.log('8888')
-                $('#answer-a').removeClass('yes');
-                if(!$('#answer-b').hasClass('yes')){
-                    $('#answer-b').addClass('yes');
-                    Game.data.answerNow = 0;
-                }
-                $('#change-Q').hide();
-                if(Game.data.chosedNum>=4){
-                    $('#result-Q').show();
-                }else{
-                    $('#next-Q').show();
-                }
-            });      
-            $('#result-Q').click(function(){//查看结果
-               Game.getAnswer();
-                console.log('完成答题'+Game.data.chosedNum,Game.data.item.id,Game.data.score);
-                $('#score').attr('src',Game.data.resultArr[Game.data.score]);
-                var timer02 = setTimeout(function(){
-                    $('.page-03-02').hide();
-                    $('.page-03-03').show();
-                    clearTimeout(timer02);
-                },1000);
-
-                var timer = setTimeout(function(){
-                    $('.page-03').hide();
-                    $('.page-03-03').hide();
-                    $('.page-04').show();
-                    if(Game.data.score>=3){
-                        sresultMic.play();
-                    }else{
-                        eresultMic.play();
-                    }
-                    clearTimeout(timer);
-                },2500);
-            });          
+                Game.data.score++  
+                Game.next()         
+            });   
+                     
             $('#toShare').click(function(){
                 $('.shareBg').show();
             });
@@ -296,32 +297,67 @@ $(document).ready(function(){
                 $('.shareBg').hide();
             })
         },
-        next: function() { // 下一题
-            getAnswer();
+        next: function() { // 下一题  
+            sucMic.currentTime = 0;
+            sucMic.play();
+            // $('.shou-true').show();                        
+            // console.log('第几题多少分',Game.data.score);
+            console.log('已答题'+(Game.data.index+1), Game.data.score);
             var timer = setTimeout(function(){
-                $('.page-03-02').hide();
-                Game.pageInit();
-                clearTimeout(timer);
-            },1000);
-        },
-        getAnswer: function(){
-            if(!Game.data.chosed&&Game.data.chosedNum<=5){
-                Game.data.chosedNum++;
-                if(Game.data.item.answer== Game.data.answerNow){
-                    sucMic.currentTime = 0;
-                    sucMic.play();
-                    $('.shou-true').show();
-                    Game.data.score+=1;
-                }else{
-                    errMic.currentTime = 0;
-                    $('.shou-wrong').show();
-                    errMic.play();
+                // $('.page-03-02').hide();
+                if(Game.data.index<5){
+                    Game.data.index++
+                    Game.pageInit();
+                    clearTimeout(timer);
+                } else {
+                    $('.page-03-03').show();
+                    var timer02 = setTimeout(function(){
+                        $('.page-03').hide();
+                        $('.page-03-03').hide();
+                        $('.page-04').show();
+                        sresultMic.play();
+                        var code = null
+                        var resultclass = null
+                        if (Game.data.score >= Game.data.resultCode.tansuo) {
+                            console.log('>=4')
+                           code = Game.data.resultCode.tansuo
+                        } else if (Game.data.score == Game.data.resultCode.hezuo) {
+                            code = Game.data.resultCode.hezuo
+                            console.log('==3')
+                        } else {
+                            code = Game.data.resultCode.jianchi
+                            console.log('<=2')
+                        }
+                        Game.data.shareObj.bg = Game.data.resultObj[code].url
+                        resultclass = Game.data.resultObj[code].classname
+                        $(resultclass).show()
+                        clearTimeout(timer02);
+                    }, 1500)
                 }
-                Game.data.chosed = true;
-                Game.data.QArr.splice(Game.data.randNum,1);
-                console.log('第几题多少分',Game.data.chosedNum,Game.data.score);
-            }
+            },500);
+        },
+        getResult: function (){
+            console.log('完成答题'+Game.data.chosedNum,Game.data.item.id,Game.data.score);
+            // $('#score').attr('src',Game.data.resultArr[Game.data.score]);
+            var timer02 = setTimeout(function(){
+                $('.page-03-02').hide();
+                $('.page-03-03').show();
+                clearTimeout(timer02);
+            },1000);
+
+            var timer = setTimeout(function(){
+                $('.page-03').hide();
+                $('.page-03-03').hide();
+                $('.page-04').show();
+                if(Game.data.score>=3){
+                    sresultMic.play();
+                }else{
+                    eresultMic.play();
+                }
+                clearTimeout(timer);
+            },2500);
         }
+        
     }
 });
 function ImgLoadingByFile(imgArray,loadPageID,loadTxtID,showpageID){
@@ -403,55 +439,9 @@ function portrait(){
         $('#page-landscape').hide();
 
         var imgFile = [
-            "img/bg.png",
-            "img/zhen02.png",
-            "img/zhen03.png",
-            "img/zhizhen.png",
-            "img/button-begin.png",
-            "img/change.png",
-            "img/gfdg.png",
-            "img/goon.png",
-            "img/if-true.png",
-            "img/if-wrong.png",
-            "img/jiaojuan.png",
-            "img/jisuanloading02.gif",
-            "img/kaishi.png",
-            "img/kuang-true.png",
-            "img/kuang-wrong.png",
-            "img/line.png",
-            "img/mouse.png",
+            'img/beginbg.jpg',
             "img/music-close.png",
-            "img/music-open.png",
-            "img/one-bg.png",
-            "img/phone.png",
-            "img/result-again.png",
-            "img/result-share.png",
-            "img/share.jpg",
-            "img/shareBg.png",
-            "img/tanchuang02.png",
-            "img/shou-true02.png",
-            "img/shou-wrong02.png",
-            "img/title01.png",
-            "img/title02.png",
-            "img/title03.png",
-            "img/title04.png",
-            "img/title05.png",
-            "img/title06.png",
-            "img/title07.png",
-            "img/title08.png",
-            "img/title09.png",
-            "img/title10.png",
-            "img/title11.png",
-            "img/title12.png",
-            "img/title13.png",
-            "img/title14.png",
-            "img/title15.png",
-            "img/0fen.png",
-            "img/20fen.png",
-            "img/40fen.png",
-            "img/60fen.png",
-            "img/80fen.png",
-            "img/100fen.png"
+            "img/music-open.png"
         ];
         ImgLoadingByFile(imgFile,'loadingPage','zhizhen','pageContainer');
         firstInit = false;
