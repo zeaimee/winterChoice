@@ -2,13 +2,14 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title>领潮者·真敢做 不过这则新闻更敢说</title>
+    <title>测一测你的精神图腾</title>
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0,shrink-to-fit=no">
     <meta content="yes" name="apple-mobile-web-app-capable">
     <meta content="black" name="apple-mobile-web-app-status-bar-style">
     <meta content="telephone=no" name="format-detection">
     <meta name="msapplication-tap-highlight" content="no">
+    <link rel="stylesheet" href="css/swiper.min.css">
     <link rel="stylesheet" href="css/style.css"/>
     <script src="js/jquery-1.8.3.min.js"></script>
     <script src="js/jquery.qrcode.min.js"></script>
@@ -48,44 +49,37 @@
     <!--正文-->
     <div class="page-box" id="pageContainer">
         <div class="page-01">
-            <div class="go-rule"></div>
-        </div>
-        <div class="page-02">
-            <div class="go-game"></div>
-            <span id="closePage"></span>
+            <img src="img/pageone-text1.png" alt="" class="pageone-text1"/>
+        	<img src="img/pageone-texe2.png" alt="" class="pageone-text2" />
+        	<img src="img/pageone-text3.png" class="pageone-text3"/>
+        	<img src="img/yun1.png" class="pageone-yun1"/>
+        	<img src="img/shan-bg.png" alt="" class="pageone-shan"/>
+        	<img src="img/guang.png" class="pageone-guang"/>
+        	<img src="img/people.png" alt="" class="pageone-people" />
+        	<img src="img/yun2.png" class="pageone-yun2"/>
+            <div id="go-game" class="go-game"></div>	
         </div>
         <div class="page-03 page-03-an01">
-            <div id="nowNum" class="nowNum">
-                <img class="gfdg" src="img/gfdg.png" alt=""/>
-                <img class="mouse" src="img/mouse.png" alt=""/>
+            <img class="answerpage-text2" src="img/answerpage-text2.png" alt="">
+            <img class="answerpage-text1" src="img/answerpage-text1.png" alt="">
+            <img class="answerpage-textk" src="img/answerpage-textk.png" alt="">
+            <div class="question-box">
+                <div id="title" class="title"><img  src="img/answerall/w1.png"/></div>
+                <div  class="btn-box" >
+                    <div id="answer-a" class="answer-a">
+                        <img class="chosed-bg" src="img/answerKbgBlue.png" alt=""/>    
+                        <img class="btn-bg" src="img/answerKbg.png" alt=""/>
+                        <img class="answer-inner" src="img/answerall/w1-a.png"/>              
+                    </div>
+                    <div id="answer-b" class="answer-b">
+                        <img class="chosed-bg" src="img/answerKbgBlue.png" alt=""/>    
+                        <img class="btn-bg" src="img/answerKbg.png" alt=""/>
+                        <img class="answer-inner" src="img/answerall/w1-b.png"/>             
+                    </div>
+                </div>
             </div>
-            <p id="title" class="title"><span></span></p>
-            <div id="inner" class="inner"><img  src="img/title01.png"/></div>
-            <div  class="btn-box" >
-                <img class="line" src="img/line.png" alt=""/>
-                <div id="answer-a" class="right">
-                    <img class="if-true" src="img/if-true.png" alt=""/>
-                    <img class="if-wrong" src="img/if-wrong.png" alt=""/>
-                    <img class="btn-bg" src="img/kuang-true.png" alt=""/>
-                    <p> <span>真：横说竖说</span></p>
-                </div>
-                <div id="answer-b" class="error">
-                    <img class="if-true" src="img/if-true.png" alt=""/>
-                    <img class="if-wrong" src="img/if-wrong.png" alt=""/>
-                    <img class="btn-bg" src="img/kuang-wrong.png" alt=""/>
-                    <p><span>jia：横说竖说</span></p>
-                </div>
-                <div id="change-Q" class="change-Q">
-                    <!--换一题-->
-                </div>
-                <div id="next-Q" class="next-Q">
-                    <!--GO!-->
-                </div>
-                <div id="result-Q" class="result-Q">
-                    <!--我要交卷-->
-                </div>
-                <!--<img class="guangzou" src="img/guangzou.gif" alt=""/>-->
-            </div>
+            <img class="question-superman" src="img/superman.png" alt="">
+            <img class="question-ball" src="img/ball.png" alt="">
         </div>
         <div class="page-03-02 shou-true">
             <img src="img/shou-true02.png" alt=""/>
@@ -93,23 +87,145 @@
         <div class="page-03-02 shou-wrong">
             <img src="img/shou-wrong02.png" alt=""/>
         </div>
-        <div class="page-03-03">
-            <img class="jisuan" src="img/jisuanloading02.gif" alt=""/>
-            <p>答题结束，正在计算分数...</p>
+        <div class="resultD">
+        	<div class="resultD-onepage">
+        		<img src="img/D/D-texttitle.png" class="D-texttitle"/>
+        		<img src="img/D/D-star.png" class="D-star"/>
+        		<img src="img/D/hudie1.gif" class="D-hudie1"/>
+        		<img src="img/D/hudie2.gif" class="D-hudie2"/>
+        		<img src="img/D/hudie2.gif" class="D-hudie3"/>
+        		<div class="textfirst">
+        			<img src="img/D/D-text1.png" alt="" class="D-text1"/>
+        		    <img src="img/D/D-text2.png" class="D-text2"/>       		    
+        		</div>
+        		<div class="textsecond">
+        			<img src="img/D/D-text3.png" class="D-text3"/>
+        			<img src="img/D/D-text4.png" class="D-text4"/>
+        			<div class="openyours"></div>
+        		</div>	
+        	</div>
+        	<div class="resultD-twopage">
+        		<img src="img/D/D-bigtext.png" class="D-bigtext"/>
+	        	<img src="img/D/hudie1.gif" class="D-hudie1"/>
+	        	<img src="img/D/hudie2.gif" class="D-hudie2"/>
+	        	<img src="img/D/hudie2.gif" class="D-hudie3"/>
+	        	<img src="img/D/D-star.png" class="D-star"/>
+	        	<img src="img/result-kuang.png" class="D-result-kuang"/>
+	        	<img src="img/D/D-kuangtext1.png" class="D-kuangtext1"/>
+	        	<img src="img/D/D-kuangtext2.png" class="D-kuangtext2"/>	        	
+	        	<img src="img/D/D-titleimg.png" class="D-title"/>
+        	</div>
+        	<div class="resultDsave"></div>
+        </div>
+        <div class="resultT">
+        	<div class="resultT-onepage">
+        		<img src="img/T/T-shitou.png" class="T-shitou"/>
+        		<img src="img/T/T-fly.png" alt="" class="T-fly"/>
+        		<img src="img/T/T-people.png" class="T-people"/>
+        		<img src="img/T/T-texttitle.png" class="T-texttitle"/>
+        		<div class="textfirst">
+        			<img src="img/T/T-text1.png" alt="" class="T-text1"/>
+        		    <img src="img/T/T-text2.png" class="T-text2"/>       		    
+        		</div>
+        		<div class="textsecond">
+        			<img src="img/T/T-text3.png" class="T-text3"/>
+        			<img src="img/T/T-text4.png" class="T-text4"/>
+        			<div class="openyours"></div>
+        		</div>	
+        	</div>
+        	<div class="resultT-twopage">
+        		<img src="img/T/T-shitou02.png" class="T-shitou2"/>
+        		<img src="img/T/T-bigtext.png" class="T-bigtext"/>
+        		<img src="img/T/T-fly02.png" alt="" class="T-fly2"/>
+        		<img src="img/T/T-people.png" class="T-people2"/>
+        		<img src="img/T/T-name.png" class="T-name"/>
+        		<img src="img/result-kuang.png" class="T-result-kuang"/>
+        		<img src="img/T/T-kuangtext1.png" class="T-kuangtext1"/>
+        		<img src="img/T/T-kuangtext2.png" class="T-kuangtext2"/>
+        	</div>
+        	<div class="resultTsave"></div>
+        </div>
+        
+        <div class="resultJ">
+        	<div class="resultJ-onepage">
+        		<img src="img/J/water.png" alt="" class="J-water"/>
+        		<img src="img/J/shuimu1.png" class="J-shuimu1"/>
+        		<img src="img/J/shuimu2.png" class="J-shuimu2"/>
+        		
+        		<img src="img/J/J-texttitle.png" class="J-texttitle"/>
+        	    <img src="img/J/J.png" alt="" class="J-j"/>
+        		<div class="textfirst">
+        			<img src="img/J/J-text1.png" alt="" class="J-text1"/>
+        		    <img src="img/J/J-text2.png" class="J-text2"/>       		    
+        		</div>
+        		<div class="textsecond">
+        			<img src="img/J/J-text3.png" class="J-text3"/>
+        			<img src="img/J/J-text4.png" class="J-text4"/>
+        			<div class="openyours"></div>
+        		</div>	
+        	</div>
+        	<div class="resultJ-twopage">
+        		<img src="img/J/water.png" alt="" class="J-water"/>
+        		<img src="img/J/shuimu1.png" class="J-shuimu1"/>
+        		<img src="img/J/shuimu2.png" class="J-shuimu2"/>
+        		<img src="img/result-kuang.png" class="J-result-kuang"/>
+        		<img src="img/J/J-kuangtext_03.png" class="J-kuangtext1"/>
+        		<img src="img/J/J-kuangtext_07.png" class="J-kuangtext2"/>
+        		<img src="img/J/J-bigtext.png" alt="" class="J-bigtext"/>
+        		<img src="img/J/J.png" class="J-j" />
+        		<img src="img/J/J-name.png" class="J-name"/>
+	        	<!--<div class="lookother"></div>
+	        	<div class="gosaveimg"></div>	   -->
+        	</div>
+        	<div class="resultJsave"></div>
         </div>
         <div class="page-04">
-            <img src="img/bg.png"   id="score" class="score"/>
-            <div id="playAgain" class="playAgain"></div>
-            <div id="toShare" class="toShare"></div>
-            <img class="shareBg" src="img/shareBg.png" alt=""/>
+            <img id="otherResult" class="otherResult" src="img/last-btn_03.png" alt="">
+            <img id="goResult" class="goResult" src="img/last-btn_05.png"/>
+            <div class="allResult-box">
+                <div class="allResult-inner">
+                    <img id="allResult-close" class="allResult-close" src="img/close.png" alt="">
+                    <div class="swiper-container" id="swiper-container">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide" >
+                                <img src="img/tan-diwang.png" alt="">
+                                <div class="go-result-detail" data-result="3"></div>
+                            </div>
+                            <div class="swiper-slide" >
+                                <img src="img/tan-jingyu.png" alt="">
+                                <div class="go-result-detail" data-result="2"></div>
+                            </div>
+                            <div class="swiper-slide" >
+                                <img src="img/tan-lvxing.png" alt="">
+                                <div class="go-result-detail" data-result="4"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-button-left"></div>
+                    <div class="swiper-button-right"></div>
+                    <img id="videobtn" class="videobtn" src="img/videobtn.png" alt="">
+                </div>
+            </div>
         </div>
+        <div class="videodiv">
+        	<video  controls="controls" loop="loop" src="" class="video">
+        		
+        	</video>
+        	<img src="img/close.png" class="videoclose"/>
+        </div>
+        <img src="img/logo.png" class="global-logo"/>
+        <div class="page-05 resultToShare">
+            <img id="result-share-img" class="result-share-img" src="" alt="">
+        </div>
+
     </div>
 </div>
 <audio id="musicStar" src="source/music.mp3" preload="auto" loop="loop"></audio>
 <audio id="sucMic" src="source/suc.mp3" preload="auto"></audio>
-<audio id="errMic" src="source/err.mp3" preload="auto" ></audio>
-<audio id="sresultMic" src="source/result03.mp3" preload="auto" ></audio>
-<audio id="eresultMic" src="source/nresult02.mp3" preload="auto" ></audio>
+<audio id="boboboMic" src="source/bobobo.mp3" preload="auto"></audio>
+<audio id="birdMic" src="source/bird.mp3" preload="auto"></audio>
+<audio id="fengMic" src="source/feng.mp3" preload="auto"></audio>
+<audio id="jingMic" src="source/jing.mp3" preload="auto"></audio>
 <div class="btn-music">
     <img src="img/music-open.png" class="open music" style="display: block;"/>
     <img src="img/music-close.png" class="clock music" style="display: none;"/>
@@ -132,10 +248,10 @@
 <script>
     var musicStar = document.getElementById('musicStar');
     var sucMic = document.getElementById('sucMic');
-    var errMic = document.getElementById('errMic');
-    var sresultMic = document.getElementById('sresultMic');
-    var eresultMic = document.getElementById('eresultMic');
-
+	var boboboMic = document.getElementById('boboboMic');
+	var birdMic = document.getElementById('birdMic');
+	var fengMic = document.getElementById('fengMic');
+	var jingMic = document.getElementById('jingMic');
     function audioAutoPlay(id){
         var audio = document.getElementById(id);
         var play = function(){
@@ -143,28 +259,32 @@
 //            audio.pause();
             sucMic.play();
             sucMic.pause();
-            errMic.play();
-            errMic.pause();
-            sresultMic.play();
-            sresultMic.pause();
-            eresultMic.play();
-            eresultMic.pause();
+            boboboMic.play();
+            boboboMic.pause();
+            birdMic.play();
+            birdMic.pause();
+            fengMic.play();
+            fengMic.pause();
+            jingMic.play();
+            jingMic.pause();
             document.removeEventListener("touchstart",play, false);
         };
         audio.play();
         audio.pause();
         sucMic.play();
-        sucMic.pause();
-        errMic.play();
-        errMic.pause();
-        sresultMic.play();
-        sresultMic.pause();
-        eresultMic.play();
-        eresultMic.pause();
+        sucMic.pause();;
+        boboboMic.play();
+        boboboMic.pause();
+        birdMic.play();
+        birdMic.pause();
+        fengMic.play();
+        fengMic.pause();
+        jingMic.play();
+        jingMic.pause();
         document.addEventListener("touchstart",play, false);
     }
 </script>
-
+<script src="js/swiper.min.js"></script>
 <script src="js/style.js"></script>
 <!--分享代码-->
 <script type="text/javascript" src="https://h5php.xingyuanauto.com/weixin_serve/jssdk/js/wx_share.js"></script>
@@ -172,8 +292,8 @@
     $(function(){
         //微信分享调用
         var wxShare = new WxShare({ //微信自定义分享功能
-            title:'下班了 快闪人', //分享标题
-            desc:'下班不快点走准没好事',//分享描述
+            title:'', //分享标题
+            desc:'',//分享描述
             img:'img/share.jpg'//分享图片
         })
     })

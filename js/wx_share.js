@@ -32,9 +32,9 @@
 					return imgurl;
 			} 
 			            			
-			var title ='领潮者·真敢做 不过这则新闻更敢说'; // 分享标题
+			var title ='测一测你的精神图腾'; // 分享标题
             var link = window.location.href;
-            var desc = '你随便吹，真假新闻你能猜对算我输！'; // 分享描述
+            var desc = ''; // 分享描述
             var imgUrl = getUrl();
 			console.log(imgUrl);
 		    var wx_appId = msg.appId;
