@@ -472,7 +472,7 @@ function portrait(){
         $('#page-landscape').hide();
 
         var imgFile = [
-        	'img/answerBg.png',
+        	'img/answerBG.png',
         	'img/answerboxbg.jpg',
         	'img/answerKbg.png',
         	'img/answerKbgBlue.png',
