@@ -251,8 +251,8 @@ body {
   width: 14.66666667vw;
   height: 19.6vw;
   position: absolute;
-  left: 42.66666667vw;
-  top: 61.33333333vw;
+  left: 43.06666667vw;
+  top: 60vw;
   -webkit-animation: superman03 2.5s linear infinite;
   animation: superman03 2.5s linear infinite;
 }
@@ -280,8 +280,8 @@ body {
 }
 .load-page .loader-ring {
   position: absolute;
-  top: 30%;
-  left: 35%;
+  top: 53.33333333vw;
+  left: 34vw;
   width: 32vw;
   height: 32vw;
 }
@@ -289,8 +289,8 @@ body {
   width: 32vw;
   height: 32vw;
   position: absolute;
-  top: 30%;
-  left: 35%;
+  top: 53.33333333vw;
+  left: 34vw;
   -moz-border-radius: 32vw;
   -webkit-border-radius: 32vw;
   border-radius: 32vw;
