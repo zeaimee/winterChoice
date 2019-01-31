@@ -236,7 +236,8 @@ body {
   top: 0;
   overflow: hidden;
   -webkit-overflow: hidden;
-  background: #929ca1;
+  background: url(../img/beginbg.jpg);
+  background-size: 100% 100%;
 }
 .load-page {
   width: 100%;
@@ -244,13 +245,101 @@ body {
   position: absolute;
   left: 0;
   top: 0;
+  display: block;
 }
-.load-page .loading {
-  width: 32.66666667vw;
-  height: 15.73333333vw;
+.load-page .loadingpeople {
+  width: 14.66666667vw;
+  height: 19.6vw;
   position: absolute;
-  left: 33.66666667vw;
-  top: 66.13333333vw;
+  left: 42.66666667vw;
+  top: 61.33333333vw;
+  -webkit-animation: superman03 2.5s linear infinite;
+  animation: superman03 2.5s linear infinite;
+}
+@-webkit-keyframes superman03 {
+  0% {
+    -webkit-transform: translate3d(0, -4px, 0);
+    transform: translate3d(0, -4px, 0);
+  }
+  25% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    -webkit-transform: translate3d(0, 4px, 0);
+    transform: translate3d(0, 8px, 0);
+  }
+  75% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(0, -4px, 0);
+    transform: translate3d(0, -4px, 0);
+  }
+}
+.load-page .loader-ring {
+  position: absolute;
+  top: 30%;
+  left: 35%;
+  width: 32vw;
+  height: 32vw;
+}
+.load-page .loader-ring-light {
+  width: 32vw;
+  height: 32vw;
+  position: absolute;
+  top: 30%;
+  left: 35%;
+  -moz-border-radius: 32vw;
+  -webkit-border-radius: 32vw;
+  border-radius: 32vw;
+  -moz-box-shadow: 0 0.53333333vw 0 #00abf2 inset;
+  -webkit-box-shadow: 0 0.53333333vw 0 #00abf2 inset;
+  box-shadow: 0 0.53333333vw 0 #00abf2 inset;
+  animation: rotate-360 2s linear infinite;
+  -webkit-animation: rotate-360 2s linear infinite;
+}
+.load-page .loader-ring-track {
+  position: absolute;
+  top: 30%;
+  left: 35%;
+  width: 32vw;
+  height: 32vw;
+  -moz-border-radius: 32vw;
+  -webkit-border-radius: 32vw;
+  border-radius: 32vw;
+  -moz-box-shadow: 0 0 1.33333333vw 0.53333333vw rgba(0, 0, 0, 0.3) inset;
+  -webkit-box-shadow: 0 0 1.33333333vw 0.53333333vw rgba(0, 0, 0, 0.3) inset;
+  box-shadow: 0 0 1.33333333vw 0.53333333vw rgba(0, 0, 0, 0.3) inset;
+}
+@keyframes rotate-360 {
+  from {
+    -moz-transform: rotate(0);
+    -ms-transform: rotate(0);
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  to {
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@-webkit-keyframes rotate-360 {
+  from {
+    -moz-transform: rotate(0);
+    -ms-transform: rotate(0);
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  to {
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
 }
 .load-page .zhen03 {
   width: 16.53333333vw;
@@ -270,14 +359,12 @@ body {
   -webkit-transform: rotate(-45deg);
   transform: rotate(-45deg);
 }
-.load-page p {
-  width: 3.2vw;
-  height: 3.2vw;
-  border-radius: 50%;
-  background: #000;
+.load-page #loadTxt {
   position: absolute;
-  left: 48.4vw;
-  top: 87.73333333vw;
+  top: 93.33333333vw;
+  left: 46.66666667vw;
+  color: #658eb9;
+  font-size: 3.33333333vw;
 }
 .load-page .zhizhenShow {
   animation: zhizhen 0.8s ease-in forwards;
@@ -345,8 +432,7 @@ body {
   width: 24.66666667vw;
   height: 6.13333333vw;
 }
-.page-01,
-.page-02,
+.page-01.page-02,
 .page-03,
 .page-04,
 .page-03-03,
@@ -362,6 +448,11 @@ body {
   display: none;
 }
 .page-01 {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
   display: block;
   background: url(../img/beginbg.jpg);
   background-size: 100% 100%;
@@ -752,10 +843,10 @@ body {
 }
 .resultD .resultD-twopage .D-hudie1 {
   width: 48vw;
-  height: 30.66666667vw;
+  height: 33.33333333vw;
   position: absolute;
   left: 26.66666667vw;
-  top: 38.66666667vw;
+  top: 42.66666667vw;
   transform: rotate(14deg);
   -ms-transform: rotate(14deg);
   /* Internet Explorer */
@@ -1147,6 +1238,9 @@ body {
   position: absolute;
   left: 74.93333333vw;
   top: 93.33333333vw;
+  opacity: 0.2;
+  -webkit-animation: shuimu 3s linear infinite;
+  animation: shuimu 3s linear infinite;
 }
 .resultJ .resultJ-onepage .J-shuimu2 {
   width: 16.93333333vw;
@@ -1154,6 +1248,9 @@ body {
   position: absolute;
   left: 62.93333333vw;
   top: 19.46666667vw;
+  opacity: 0.2;
+  -webkit-animation: shuimu 4s linear infinite;
+  animation: shuimu 4s linear infinite;
 }
 .resultJ .resultJ-onepage .J-water {
   width: 100vw;
@@ -1161,8 +1258,8 @@ body {
   position: absolute;
   left: 0;
   top: 13.33333333vw;
-  -webkit-animation: superman 6s linear infinite;
-  animation: superman 6s linear infinite;
+  -webkit-animation: superman 5s linear infinite;
+  animation: superman 5s linear infinite;
 }
 .resultJ .resultJ-onepage .J-j {
   width: 92.13333333vw;
@@ -1170,6 +1267,8 @@ body {
   position: absolute;
   left: 9.06666667vw;
   top: 39.86666667vw;
+  -webkit-animation: superman02 6s linear infinite;
+  animation: superman02 6s linear infinite;
 }
 .resultJ .resultJ-onepage .J-texttitle {
   width: 43.06666667vw;
@@ -1245,8 +1344,8 @@ body {
   position: absolute;
   left: 0;
   top: 0;
-  -webkit-animation: superman 8s linear infinite;
-  animation: superman 8s linear infinite;
+  -webkit-animation: superman 7s linear infinite;
+  animation: superman 7s linear infinite;
 }
 .resultJ .resultJ-twopage .J-shuimu1 {
   width: 13.86666667vw;
@@ -1254,6 +1353,9 @@ body {
   position: absolute;
   left: 29.33333333vw;
   top: 134.13333333vw;
+  opacity: 0.2;
+  -webkit-animation: shuimu 3s linear infinite;
+  animation: shuimu 3s linear infinite;
 }
 .resultJ .resultJ-twopage .J-shuimu2 {
   width: 16.93333333vw;
@@ -1261,6 +1363,9 @@ body {
   position: absolute;
   left: 30.13333333vw;
   top: 18.93333333vw;
+  opacity: 0.2;
+  -webkit-animation: superman 4s linear infinite;
+  animation: superman 4s linear infinite;
 }
 .resultJ .resultJ-twopage .J-result-kuang {
   width: 79.73333333vw;
@@ -1296,6 +1401,8 @@ body {
   position: absolute;
   left: 20vw;
   top: 56vw;
+  -webkit-animation: superman02 6s linear infinite;
+  animation: superman02 6s linear infinite;
 }
 .resultJ .resultJ-twopage .J-name {
   width: 34.13333333vw;
@@ -1361,26 +1468,58 @@ body {
     opacity: 1;
   }
 }
-@-webkit-keyframes superman {
+@-webkit-keyframes shuimu {
   0% {
-    -webkit-transform: translate3d(0, -8px, 0);
-    transform: translate3d(0, -8px, 0);
+    -webkit-transform: translate3d(0, -2px, 0);
+    transform: translate3d(0, -2px, 0);
+    opacity: 0.2;
   }
   25% {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
+    opacity: 0.8;
   }
   50% {
-    -webkit-transform: translate3d(0, 8px, 0);
-    transform: translate3d(0, 8px, 0);
+    -webkit-transform: translate3d(0, 1px, 0);
+    transform: translate3d(0, 3px, 0);
+    opacity: 1;
   }
   75% {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
+    opacity: 0.8;
   }
   100% {
-    -webkit-transform: translate3d(0, -8px, 0);
-    transform: translate3d(0, -8px, 0);
+    -webkit-transform: translate3d(0, -2px, 0);
+    transform: translate3d(0, -2px, 0);
+    opacity: 0.2;
+  }
+}
+@keyframes shuimu {
+  0% {
+    -webkit-transform: translate3d(0, -2px, 0);
+    transform: translate3d(0, -2px, 0);
+    opacity: 0.6;
+  }
+  25% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    opacity: 0.8;
+  }
+  50% {
+    -webkit-transform: translate3d(0, 1px, 0);
+    transform: translate3d(0, 3px, 0);
+    opacity: 1;
+  }
+  75% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    opacity: 0.8;
+  }
+  100% {
+    -webkit-transform: translate3d(0, -2px, 0);
+    transform: translate3d(0, -2px, 0);
+    opacity: 0.6;
   }
 }
 .videodiv {
@@ -1410,14 +1549,16 @@ body {
 .page-03 {
   box-sizing: border-box;
   background: url(../img/answerboxbg.jpg);
-  background-size: contain;
+  background-size: 100% 100%;
+  width: 100%;
+  height: 100%;
 }
 .page-03 .question-box {
   width: 88.26666667vw;
   height: 71.46666667vw;
   position: absolute;
   left: 5.86666667vw;
-  top: 66vw;
+  top: 62.4vw;
   background: url(../img/answerBG.png);
   background-size: 100% 100%;
 }
@@ -1495,24 +1636,24 @@ body {
   top: 17.33333333vw;
 }
 .page-03 .answerpage-text1 {
-  width: 86.26666667vw;
-  height: 10.8vw;
+  width: 76.11764706vw;
+  height: 9.52941176vw;
   position: absolute;
-  left: 6.8vw;
-  top: 39.46666667vw;
+  left: 11.8vw;
+  top: 38.13333333vw;
 }
 .page-03 .answerpage-text2 {
-  width: 53.2vw;
-  height: 9.73333333vw;
+  width: 46.94117647vw;
+  height: 8.58823529vw;
   position: absolute;
-  left: 23.33333333vw;
-  top: 28vw;
+  left: 26.4vw;
+  top: 26.66666667vw;
 }
 .page-03 .answerpage-textk {
-  width: 100vw;
-  height: 40vw;
+  width: 88.23529412vw;
+  height: 35.29411765vw;
   position: absolute;
-  left: 0;
+  left: 5.33333333vw;
   top: 18.4vw;
 }
 .page-03 .question-superman {
@@ -1521,10 +1662,10 @@ body {
   position: absolute;
   right: -3vw;
   top: 78.66666667vw;
-  -webkit-animation: superman 6s linear infinite;
-  animation: superman 6s linear infinite;
+  -webkit-animation: superman02 6s linear infinite;
+  animation: superman02 6s linear infinite;
 }
-@-webkit-keyframes superman {
+@-webkit-keyframes superman02 {
   0% {
     -webkit-transform: translate3d(0, -8px, 0);
     transform: translate3d(0, -8px, 0);
@@ -1547,8 +1688,8 @@ body {
   }
 }
 .page-03 .question-ball {
-  width: 48.26666667vw;
-  height: 22.66666667vw;
+  width: 42.58823529vw;
+  height: 20vw;
   position: absolute;
   left: -3.33333333vw;
   top: 131.73333333vw;
@@ -1708,7 +1849,7 @@ body {
   height: 11.06666667vw;
   position: absolute;
   left: 11.33333333vw;
-  bottom: -1vw;
+  bottom: 4.66666667vw;
 }
 .page-04 .allResult-box .allResult-inner .allResult-close {
   width: 7.33333333vw;
@@ -1764,7 +1905,7 @@ body {
 }
 .page-05 img {
   width: 100%;
-  height: auto;
+  height: 100%;
 }
 .page-03-an01 .title {
   opacity: 0;

@@ -40,10 +40,13 @@
     <div class="load-page" id="loadingPage">
         <div class="img-load-now">
             <!--加载动画-->
-            <img class="loading" src="img/zhen02.png"/>
-            <img id="zhizhen" class="zhizhen" src="img/zhizhen.png" alt=""/>
-            <p></p>
-            <img class="zhen03" src="img/zhen03.png" alt=""/>
+            <img src="img/loadingimg.png" class="loadingpeople"/>
+            <div class="loader-ring" id="ring"></div>
+			    <div class="loader-ring-light" id="ringlight"></div>
+                <div class="loader-ring-track" id="ringtrack"></div>
+                <p id="loadTxt">0%</p>
+            
+        
         </div>
     </div>
     <!--正文-->
@@ -92,8 +95,8 @@
         		<img src="img/D/D-texttitle.png" class="D-texttitle"/>
         		<img src="img/D/D-star.png" class="D-star"/>
         		<img src="img/D/hudie1.gif" class="D-hudie1"/>
-        		<img src="img/D/hudie2.gif" class="D-hudie2"/>
-        		<img src="img/D/hudie2.gif" class="D-hudie3"/>
+        		<img src="img/D/hudie3.gif" class="D-hudie2"/>
+        		<img src="img/D/hudie3.gif" class="D-hudie3"/>
         		<div class="textfirst">
         			<img src="img/D/D-text1.png" alt="" class="D-text1"/>
         		    <img src="img/D/D-text2.png" class="D-text2"/>       		    
@@ -246,6 +249,7 @@
     
 </script>
 <script>
+//	var mySkrollr;
     var musicStar = document.getElementById('musicStar');
     var sucMic = document.getElementById('sucMic');
 	var boboboMic = document.getElementById('boboboMic');

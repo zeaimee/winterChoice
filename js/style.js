@@ -54,6 +54,20 @@
     }
 })(window);
 
+var musicArray = [musicStar,sucMic,boboboMic,birdMic,fengMic,jingMic];
+function initMusic(musicIDArray){
+    if(musicIDArray.length>0){
+        for(var i=0;i<musicIDArray.length;i++){
+            var play =musicIDArray[i];
+            play.load();
+        }
+    }
+}
+
+
+
+
+
 $(document).ready(function(){
     // 开始答题
     $('.page-01').on('click', '#go-game',function(){
@@ -397,20 +411,24 @@ $(document).ready(function(){
     }
 });
 function ImgLoadingByFile(imgArray,loadPageID,loadTxtID,showpageID){
+	 $('.btn-music').show();
+	  musicStar.play();   
     function complete(long){
         var timer = setTimeout(function(){
             $('#'+loadPageID).hide();
             $('#'+showpageID).show();
-            $('.btn-music').show();
-            musicStar.play();
-            
+           
+//          $('.load-page').hide();
+//          $('.page-01').show();
+                   
             //音乐
             clearTimeout(timer);
         },long);
     }
     if(sessionStorage.getItem("pageloaded")){
-        $('#'+loadTxtID).addClass('zhizhenShow');
-        complete(1300);
+//      $('#'+loadTxtID).addClass('zhizhenShow');
+ 		$('#'+loadTxtID).html('100%');
+        complete(2000);
     }else{
         var imgLoad = 0;
         var btime = new Date();
@@ -424,16 +442,16 @@ function ImgLoadingByFile(imgArray,loadPageID,loadTxtID,showpageID){
                 img[i].onload = function(){
                     imgLoad++;
                     percent = parseInt(imgLoad/imgTotal*90);
-                    $('#'+loadTxtID).css('transform','rotate('+(-45+percent)+'deg)');
+//                  $('#'+loadTxtID).css('transform','rotate('+(-45+percent)+'deg)');
+					$('#'+loadTxtID).html(percent+'%');
                     console.log(percent);
-
                     if(percent>=90){
                         var etime = new Date();
                         console.log(etime-btime);
                         if(etime-1000>btime){
-                            complete(100);
+                            complete(1000);
                         }else{
-                            complete(200);
+                            complete(2000);
                         }
                         //alert(etime-btime);
                         sessionStorage.setItem("pageloaded", "true");
@@ -443,6 +461,7 @@ function ImgLoadingByFile(imgArray,loadPageID,loadTxtID,showpageID){
         }
     }
 }
+
 
 //横屏
 function landscape(){
@@ -554,7 +573,8 @@ function portrait(){
             'img/T/T-text4.png',
             'img/T/T-texttitle.png'  
         ];
-        ImgLoadingByFile(imgFile,'loadingPage','zhizhen','pageContainer');
+//      ImgLoadingByFile(imgFile,'loadingPage','zhizhen','pageContainer','ringtrack','ringlight','ring');
+		ImgLoadingByFile(imgFile,'loadingPage','loadTxt','pageContainer');
         firstInit = false;
     }else {
         //$('#page-portrait').show();
